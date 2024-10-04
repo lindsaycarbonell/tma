@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Triangle Mutual Aid</title>
+
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="./bootstrap-icons-1.5.0/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Favicons -->
+<!-- 
+<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+ -->
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      /* Show it is fixed to the top */
+      body {
+        min-height: 75rem;
+        padding-top: 4.5rem;
+      }
+
+
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .feature-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        color: #fff;
+        border-radius: .75rem;
+      }
+
+      .icon-link {
+        display: inline-flex;
+        align-items: center;
+      }
+      .icon-link > .bi {
+        margin-top: .125rem;
+        margin-left: .125rem;
+        transition: transform .25s ease-in-out;
+        fill: currentColor;
+      }
+      .icon-link:hover > .bi {
+        transform: translate(.25rem);
+      }
+
+      .icon-square {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+        border-radius: .75rem;
+      }
+
+      .rounded-4 { border-radius: .5rem; }
+      .rounded-5 { border-radius: 1rem; }
+
+      .text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
+      .text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
+      .text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
+
+      .card-cover {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
+      
+      li {
+        margin-bottom: 10px;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Triangle Mutual Aid</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" href="./">Helene</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./debbie">Debby</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./housing.html">Housing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Other</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./photos.html">Photos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./blog.html">Blog</a>
+        </li>
+      </ul>
+    
+      <div class="d-flex" style="color: blue; font-size: 1.5rem; padding-right: 25px;">
+        <a href="https://www.facebook.com/TriangleMutualAid" target="_blank"><i class="bi bi-facebook"></i></a>
+      </div>
+<!-- 
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+ -->
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="bg-light p-5 rounded">
+    <h1><img src="./img/logo.svg" style="height: 130px; width: 130px;"> Triangle Mutual Aid</h1>
+    <img width="200" style="float: right; margin-left: 1rem; max-width: 150px; height: auto;" src="./photos/kids.JPG"  class="img-thumbnail">
+  </div>
+</main>
+
+  <div class="container px-4 py-5" id="icon-grid">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+      <div class="col d-flex align-items-start">
+        <i class="bi bi-heart"  style="font-size: 2rem; margin-right: 0.8rem;"></i>
+        <div>
+          <h4 class="fw-bold mb-0">Other Things We Do</h4>
+          
+          <p>
+          At it's core, Mutual Aid is a way of living. We are replacing "rugged individualism",
+          isolatation and fear with meaningful community and collaborative resilience.
+          </p>
+          
+          <p>
+          Our growing core collective gets together regularly to share food and conversation. 
+          We check in on each other in our group chat. We give each other rides, show up 
+          for each other when there is a need. 
+          </p>
+          
+          <p>
+          Even as we learn to deepen our trust in each other and reliance on community, we 
+          work to expand our connections amongst the people we live and work around, across
+          all artificial barriers such as gender, race, sexuality, or immigration status. "Our people"
+          are those who put life above profit, for whom security is increased through expanded
+          generosity and reciprocity. In this spirit we have been able to:
+          </p>
+          <ul>
+            <li>
+              Provide ongoing resources to help with purchasing and transporting medicines 
+              and ensuring telephone service to people trying to survive while stretching
+              one inadequate disability income.
+            </li>
+            <li>
+              Gather in ongoing solidarity with a refugee family to provide tools for safety, <a href="https://www.patreon.com/posts/work-day-update-91478774" target="_blank">build
+              a gate</a> on the property, make a connection to legal services, and build 
+              friendship around fabulous middle-eastern food. 
+            </li>
+            <li>
+              Pay for ongoing video conferencing service for a partner group engaged in 
+              community mutual aid and supporting long-term trauma healing.
+            </li>
+            <li>
+              Support occasional calls for support from organizing partners in the triangle and surrounding
+              communities.
+            </li>
+            <li>
+              Contribute to short-term housing, food, <a href="https://www.patreon.com/posts/security-cameras-80827480" target="_blank">security camera</a>, and other needs for 
+              individuals involved in front-line activism in the area. 
+            </li>
+            <li>
+              Organize online naloxone training and <a href="https://www.patreon.com/posts/naloxone-91802154" target="_blank">distribute the linked recording</a> for all. 
+            </li>
+            <li>
+              Participate in several previous mutual aid disaster relief efforts. 
+            </li>
+          </ul>
+          
+          
+        </div>
+      </div>
+
+      <div class="col d-flex">        
+        <div>
+          <h4 class="fw-bold mb-0">Get Involved</h4>
+          <p>
+          <a href="#contact">Contact us</a> so we can set up a meeting to discuss what Mutual Aid means to you and how we might best work together, and to learn about upcoming
+          events. 
+          </p>
+          <br><br>
+          <i class="bi bi-currency-dollar"  style="font-size: 2rem; margin-right: 0.8rem;"></i>
+          <h4 class="fw-bold mb-0">Donations</h4>
+          <p>
+          Venmo: @TriangleMutualAid 
+          </p>
+          <p>
+          <img src="./img/venmo.jpg" width="100%" style="max-width: 100%;">
+          </p>
+          <p>
+          CashApp: $TriangleMutualAid 
+          </p>
+          <p>
+          <img src="./img/cashapp.jpeg"  width="100%" style="max-width: 100%; position: relative; top: -10px;">
+          </p>
+        </div>
+      </div>
+
+      <div class="col d-flex">
+        <i class="bi bi-people"  style="font-size: 2rem; margin-right: 0.8rem;"></i>
+        <div>
+          <h4 class="fw-bold mb-0">Collaborators</h4>
+          <a href="https://www.refugeecommunitypartnership.org" target="_blank">Refugee Community Partnership</a>
+          </p>
+          <p>
+          <a href="https://www.refugeecommunitypartnership.org" target="_blank"><img src="/img/rcp.png" width="100%" style="max-width: 100%"></a>
+          </p>
+          <p>
+          <a href="https://www.facebook.com/LightofAlamance" target="_blank">Light of Alamance</a>
+          </p>
+          <p>
+          <a href="https://www.facebook.com/LightofAlamance" target="_blank"><img src="/img/loa.jpg" width="100%" style="max-width: 100%;"></a>
+          </p>
+          
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">Contact Us:  <a href="mailto:info@trianglemutualaid.org">info@TriangleMutualAid.org</a> or through <a href="https://m.me/TriangleMutualAid" target="_blank">Facebook Messenger</a></span>
+  </div>
+  <br id="contact">
+</footer>
+
+    <script src="./js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWBDD3C64N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PWBDD3C64N');
+    </script>      
+  </body>
+</html>
+

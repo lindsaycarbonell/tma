@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Triangle Mutual Aid</title>
+
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="./bootstrap-icons-1.5.0/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Favicons -->
+<!-- 
+<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+ -->
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      /* Show it is fixed to the top */
+      body {
+        min-height: 75rem;
+        padding-top: 4.5rem;
+      }
+
+
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .feature-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        color: #fff;
+        border-radius: .75rem;
+      }
+
+      .icon-link {
+        display: inline-flex;
+        align-items: center;
+      }
+      .icon-link > .bi {
+        margin-top: .125rem;
+        margin-left: .125rem;
+        transition: transform .25s ease-in-out;
+        fill: currentColor;
+      }
+      .icon-link:hover > .bi {
+        transform: translate(.25rem);
+      }
+
+      .icon-square {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+        border-radius: .75rem;
+      }
+
+      .rounded-4 { border-radius: .5rem; }
+      .rounded-5 { border-radius: 1rem; }
+
+      .text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
+      .text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
+      .text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
+
+      .card-cover {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Triangle Mutual Aid</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Helene</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./debbie.html">Debby</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./housing.html">Housing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./other.html">Other</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./photos.html">Photos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./blog.html">Blog</a>
+        </li>
+      </ul>
+    
+      <div class="d-flex" style="color: blue; font-size: 1.5rem; padding-right: 25px;">
+        <a href="https://www.facebook.com/TriangleMutualAid" target="_blank"><i class="bi bi-facebook"></i></a>
+      </div>
+<!-- 
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+ -->
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="bg-light p-5 rounded">
+    <h1><img src="./img/logo.svg" style="height: 130px; width: 130px;"> Triangle Mutual Aid</h1>
+    <img width="200" style="float: right; margin-left: 1rem; max-width: 200px; height: auto;" src="./img/helene.JPG"  class="img-thumbnail">
+  </div>
+</main>
+
+  <div class="container px-4 py-5" id="icon-grid">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+      <div class="col d-flex align-items-start">
+        <i class="bi bi-truck"  style="font-size: 2rem; margin-right: 0.8rem;"></i>
+        <div>
+          <h4 class="fw-bold mb-0">Hurricane Helene Response</h4>
+          <p>
+          For the latest updates, please see articles posted to our <a href="https://www.patreon.com/trianglemutualaid" target="_blank">Patreon Site</a>. 
+          </p>
+          
+          <p>
+          <strong>Drop-off Locations for Donations</strong>
+          </p>
+          
+<p>
+Hillsborough: Diaper Bank Warehouse<br>
+437 Dimmock's Mill Rd, Unit 1<br>
+M-Sat 8:00-5:00
+</p>
+
+          <p>Hillsborough: Weaver Street Market<br>
+          228 S. Churton St.<br>
+          8am - 9pm.
+          </p>          
+                    
+          <p>
+            Carrboro, NC: Back Alley Bikes<br>
+            100 Boyd St, Carrboro, NC 27510<br>
+            Open Tues - Sat. 11am to 6pm          
+          </p>  
+          
+          <p>
+            Carrboro: Weaver Street Market<br>
+            101 E. Weaver St. <br>
+            8am - 9pm.
+          </p>
+          
+          <p>
+            Chapel Hill (Southern Village): Weaver Street Market<br>
+            716 Market St.<br>
+            8am - 9pm.
+          </p>
+          
+          <p>
+            Raleigh, NC: RUMAH: 415 Hillsborough St<br>
+            Drop off during events. See calendar on website <a href="https://raleighmutualaid.info" target="_blank">raleighmutualaid.info</a>          
+          </p>
+          
+          <p>
+            Durham, NC: Art Post at 718 Iredell<br>
+            Starting Monday, Sept. 30th<br>
+            Open Monday-Saturday 12-6
+          </p>
+          
+            <p>
+            Durham: The Scrap Exchange<br>
+            2050 Chapel Hill Rd, Durham, NC 27707<br>
+            10:30am - 6pm Tue-Sun.
+            </p>
+            
+            <p>
+            Durham: Maverick&rsquo;s Smokehouse and Taproom<br>
+            900 W Main Street Durham NC<br>
+            normal business hours.
+            </p>
+            
+            <p>
+            Durham: Fuzzy Needle<br>
+            1005 W Chapel Hill St, Durham, NC 27701<br>
+            Thurs/Fr/Sat/Sun 11-4
+            </p>
+            
+            <p>
+            Durham: Perfect Lovers<br>
+            2823 N. Roxboro St.<br>
+            Mon-Fri 7:30-1pm, Sat &amp; Sun 8:30-1pm. 
+            </p>
+            
+            <p>
+            Durham: Ninth Street Bakery <br>
+            136 E Chapel Hill St, Durham, NC 27701<br>
+            Monday, Tuesday 2-5
+            </p>
+            
+            
+            <p>
+            Greensboro, NC: 241 Summit Avenue<br>
+            11am - 1pm Tuesday-Friday
+            </p>
+            
+            <p>
+            Charlotte: Patagonia Charlotte<br>
+            101 W. Worthington Ave, Charlotte NC, 28203<br>
+            Open Mond-Sat 11-7 and Sund 11-6
+            </p>
+
+          <p>
+          Charlotte: Common Market Oakwold<br>
+          4420-A Monroe Rd<br>
+          Sun - Mon: 8-8. Tues-Sat: 8-10
+          </p>
+          
+          <p>
+          Charlotte: SEAC Village<br>
+          500 Bradford Dr<br>
+          10-6 mon-fri
+          </p>
+          
+          <p>
+          Charlotte: Carolina Migrant Network<br>
+          3400 Shamrock Dr<br>
+          8-5 mon-fri
+          </p>
+          
+          
+          
+          <p>Asheboro: The SwatchWorks, Inc.<br>
+          453 Oakhurst Rd.<br>
+          Mon-Thur 7:30am - 4pm. 
+          </p>
+
+
+          
+
+          <p><strong>What is Needed</strong></p>
+          <p>Updated.  It’s not a long and comprehensive list because folks are trying to focus. These are the needs folks in our network gleaned from text messages, posts, social media coming out of the impacted zone. </p>
+          
+          <ul>
+            <li>Water!</li>
+            <li>Baby Formula</li>
+            <li>Food, esp. nonperishable</li>
+            <li>Menstrual products</li>
+            <li>Charged phone power packs</li>
+            <li>Generators</li>
+            <li>Gasoline & gas cans</li>
+            <li>Propane & propane stoves</li>
+            <li>Charcoal, no-fluit starter</li>
+            <li>2-stroke oil for chainsaws</li>
+            <li>Flashlights</li>
+            <li>Tents, tarps for unhoused</li>
+            <li>Bleach</li>
+            <li>Cleaning supplies</li>
+            <li>Big plastic bins</li>
+            <li>Blood donations</li>
+            <li>Alcoholic & nonalcoholic drinks</li>
+            <li>Fans</li>
+            <li>Water!</li>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="col d-flex">        
+        <div>
+          <h4 class="fw-bold mb-0">Get Involved</h4>
+          <p>
+          <a href="#contact">Contact us</a> so we can set up a meeting to discuss what Mutual Aid means to you and how we might best work together, and to learn about upcoming
+          events. 
+          </p>
+          <br><br>
+          <i class="bi bi-currency-dollar"  style="font-size: 2rem; margin-right: 0.8rem;"></i>
+          <h4 class="fw-bold mb-0">Donations</h4>
+          <p>
+          Venmo: @TriangleMutualAid 
+          </p>
+          <p>
+          <img src="./img/venmo.jpg" width="100%" style="max-width: 100%;">
+          </p>
+          <p>
+          CashApp: $TriangleMutualAid 
+          </p>
+          <p>
+          <img src="./img/cashapp.jpeg"  width="100%" style="max-width: 100%; position: relative; top: -10px;">
+          </p>
+        </div>
+      </div>
+
+      <div class="col d-flex">
+        <i class="bi bi-people"  style="font-size: 2rem; margin-right: 0.8rem;"></i>
+        <div>
+          <h4 class="fw-bold mb-0">Collaborators</h4>
+          <a href="https://mutualaiddisasterrelief.org" target="_blank">Mutual Aid Disaster Relief</a>
+          </p>
+          <p>
+          <a href="https://mutualaiddisasterrelief.org" target="_blank"><img src="./img/Square_MARD.png" width="100%" style="max-width: 100%"></a>
+          </p>
+          <p>
+          <a href="https://dayonerelief.org" target="_blank">Day One Relief</a>
+          </p>
+          <p>
+          <a href="https://dayonerelief.org" target="_blank"><img src="./img/cropped-day-one-relief.png" width="100%" style="max-width: 100%;"></a>
+          </p>
+          
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">Contact Us:  <a href="mailto:info@trianglemutualaid.org">info@TriangleMutualAid.org</a> or through <a href="https://m.me/TriangleMutualAid" target="_blank">Facebook Messenger</a></span>
+  </div>
+  <br id="contact">
+</footer>
+
+    <script src="./js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWBDD3C64N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PWBDD3C64N');
+    </script>      
+  </body>
+</html>
+

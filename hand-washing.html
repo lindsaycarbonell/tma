@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Triangle Mutual Aid</title>
+
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="./bootstrap-icons-1.5.0/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Favicons -->
+<!-- 
+<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+ -->
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      /* Show it is fixed to the top */
+      body {
+        min-height: 75rem;
+        padding-top: 4.5rem;
+      }
+
+
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .feature-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        color: #fff;
+        border-radius: .75rem;
+      }
+
+      .icon-link {
+        display: inline-flex;
+        align-items: center;
+      }
+      .icon-link > .bi {
+        margin-top: .125rem;
+        margin-left: .125rem;
+        transition: transform .25s ease-in-out;
+        fill: currentColor;
+      }
+      .icon-link:hover > .bi {
+        transform: translate(.25rem);
+      }
+
+      .icon-square {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+        border-radius: .75rem;
+      }
+
+      .rounded-4 { border-radius: .5rem; }
+      .rounded-5 { border-radius: 1rem; }
+
+      .text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
+      .text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
+      .text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
+
+      .card-cover {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
+
+      #map {
+        height: 100%;  
+        width: 100%;  
+        min-height: 800px;
+       }
+       
+       .hidden { display: none; }
+      
+    </style>
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Triangle Mutual Aid</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="https://resources.trianglemutualaid.org">Resource Sharing</a>
+        </li>
+        <li>
+          <a class="nav-link active" aria-current="page" href="./hand-washing.html">Hand-Wash Stations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./photos.html">Photos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./blog.html">Blog</a>
+        </li>
+      </ul>
+    
+      <div class="d-flex" style="color: blue; font-size: 1.5rem; padding-right: 25px;">
+        <a href="https://www.facebook.com/TriangleMutualAid" target="_blank"><i class="bi bi-facebook"></i></a>
+      </div>
+      <form class="d-flex login-form">
+        <button class="btn btn-outline-success" type="button" id="showLogin">Log In</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="bg-light p-5 rounded">
+    <h1>Mutual Aid Hand-Washing Stations</h1>
+    <img width="200" style="float: right; margin-left: 1rem; max-width: 200px; height: auto;" src="photos/hand-washing-carrboro.png"  class="img-thumbnail">
+    <p class="lead">
+    This project provides free, community-maintained hand-washing stations. It began in the early days of the pandemic, Spring of 2020. 
+    More recently it's scaled back, as we all learned that face masks were more important than 
+    hand-washing in preventing Covid transmission. 
+    </p>
+    <p>
+    The units shown on the map currently are those which continued to be used, where we
+    have noticed the community feels a need for day-to-day hygiene. The most heavily used
+    throughout has been the one positioned near a food truck. If <strong>you</strong> are
+    interested in making this happen, putting some out at various food truck locations
+    might be a good idea. The work needed would be to repair a few of the old wash
+    stations (we can help with this), then maintain them by collecting and disposing of
+    dirty water and refilling clean water and soap.
+    </p>
+    <p>
+    <strong>History</strong><br>
+    Devin Ceartas built the original batch of 10, based on a design <a
+    href="https://www.indigenousaction.org/diy-emergency-handwashing-station-instructions-
+    zine/" target="_blank">Indigenous Action</a> published, with materials purchased with
+    donated funds and some critical components donated by <a
+    href="https://www.carrboroplumbing.com" target="_blank">Carrboro Plumbing</a>. Devin
+    coordinated distribution and upkeep in Carrboro and Chapel Hill, with a team of
+    between 2 and 15 folks doing the daily drudgery of changing water, filling soap,
+    collecting damaged units, etc. <a href="https://www.bonneville-electric.com"
+    target="_blank">Bonneville Electric</a> then donated labor and materials to build at
+    least 20 more, and Devin was able to place some with Mutual Aid efforts in
+    Hillsborough, Durham, Cary and Raleigh as well as provide them to some special events.
+    Devin also wrote the "web app" on this page, which allows those logged into the
+    program to check which stations need to be serviced and to record service dates, soap
+    status and if any need repair. More information about the work and the context can be
+    found in the "Community-based Covid-19 response" posts linked on our <a
+    href="/blog.html">blog page</a>. 
+    </P>
+
+  </div>
+</main>
+
+<div class="container">
+  <div class="mb-3 hidden login-form">
+    <input type="email" class="form-control" placeholder="email" id="email">
+  </div>
+  
+  <div class="mb-3 hidden login-form">
+    <input type="password" class="form-control" placeholder="password" id="password">
+  </div>
+  
+  <div class="mb-3 hidden login-form">
+    <button id="loginBtn" type="button" class="btn btn-primary">Submit</button>
+  </div>
+
+  <div class="mb-3 hidden">
+    <div class="alert alert-danger" role="alert" id="loginAlert"></div>    
+  </div>
+  
+  <button type="button" class="btn btn-primary addNew btn-sm hidden"
+  style="margin-bottom: 20px;">Add New Unit</button>
+  
+  <div id="placement" class="hidden">
+    <div class="mb-3">
+      <p id="newUnitTitle"><strong>Adding a New Unit</strong></p>
+      
+      <table class="table">
+        <tr>
+          <td>Unique ID (will show on map label)</td>
+          <td colspan="2"><input type="text" id="newUnitId" class="form-text"></td>
+        </tr>
+        <tr>
+          <td>Latitude</td>
+          <td colspan="2"><input type="text" id="newLatitude" class="form-text"></td>          
+        </tr>
+        <tr>
+          <td>Longitude</td>
+          <td colspan="2"><input type="text" id="newLongitude" class="form-text"></td>
+        </tr>
+        <tr>
+          <td>Short Description of Location</td>
+          <td colspan="2"><input type="text" id="newDescription" class="form-text"></td>
+        </tr>
+        <tr>
+          <td>Shown on Public Map?</td>
+          <td><input type="radio" name="newVisible" value="y" id="newIsVisible"> Yes</td>
+          <td><input type="radio" name="newVisible" value="n" id="newIsNotVisible"> No</td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <button type="button" class="btn btn-primary submitNew btn-sm">Save</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+
+  <div class="mb-3">
+    <div id="map"></div>
+  </div>
+  
+</div>
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">Contact Us:  <a href="mailto:trianglemutualaid@gmail.com">TriangleMutualAid@gmail.com</a> &bull; <a href="tel:+13367393039">(336) 739-3039</a></span>
+  </div>
+  <br id="contact">
+</footer>
+
+    <script src="./js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <script src="hand-wash/js/jquery-3.5.0.min.js"></script>
+    <script src="hand-wash/js/js.cookie.min.js"></script>
+    <script src="hand-wash/js/handlebars-v4.7.6.js"></script>
+    <script>
+      MutualAid = {
+        urlBase : "https://vw1lvysill.execute-api.us-east-1.amazonaws.com/2/",
+        showLogin : function(e) {
+          $("#loginBtn").on("click", function(e) {
+            e.preventDefault();
+            $(".alert-danger").html("").hide();
+            var email = $("#email").val().replace(/^\s+|\s+$/g, '');
+            var pass  = $("#password").val().replace(/^\s+|\s+$/g, '');
+            if (email && pass)  {
+              $("#loginBtn").prop("disabled", true).html('<img src="hand-wash/img/loading.gif">');
+              $.ajax({
+                contentType : 'application/json',
+                data : JSON.stringify({
+                  'email' : email,
+                  'password' :  pass
+                }),
+                dataType : 'json',
+                error : function(jqXHR, textStatus, errorThrown) {
+                  var err = 'Error ' + textStatus;
+                  if (errorThrown) {
+                    err += '; ' + errorThrown;
+                  }
+                  $("#loginAlert").html(err).parent().show("slow");
+                  $("#loginBtn").prop("disabled", false).html('Submit');
+                },
+                method : "POST",
+                success : function(data, textStatus, jqXHR) {
+                  if ("OK" == data.status) {
+                    $("#showLogin").off().html("Log Out").on("click", MutualAid.logout);
+                    $("#loginBtn").off().prop("disabled", false).html('Log Out').on("click", MutualAid.logout);
+                    MutualAid.store('id', data.id);
+                    MutualAid.store('name', data.name);
+                    MutualAid.store('token', data.token);
+                    MutualAid.store('role', data.role);
+                    if (typeof(Storage) !== "undefined") {
+                      window.localStorage.setItem('refresh', data.refresh);
+                    }
+                    
+                    MutualAid.redraw(data.units);   
+                    
+                    if ('admin' == data.role || 'unit-coordinator' == data.role) {
+                      $(".addNew").show("slow", function() {
+                        $(".addNew").on("click", function(e) {
+                          e.preventDefault();
+                          $(".addNew").hide();
+                          $("#placement").show("slow", function() {
+                            $(".submitNew").on("click", MutualAid.saveNewUnit);
+                          });
+                        });
+                      });
+                    }
+                  }
+                  else {
+                    $("#loginAlert").html('Login Unsuccessful').parent().show("slow");
+                    $("#loginBtn").prop("disabled", false).html('Submit');                    
+                  }
+                },
+                url : MutualAid.urlBase + "login"
+              });
+            }
+          });
+        },
+        units : [],
+        getUnitList : function() {
+          var request = {
+            cache : false,
+            dataType : 'json',
+            error : function(jqXHR, textStatus, errorThrown) {
+              var err = 'Error ' + textStatus;
+              if (errorThrown) {
+                err += '; ' + errorThrown;
+              }
+              alert(err);
+            },
+            method : "GET",
+            success : function(data, textStatus, jqXHR) {
+              if (data.loggedin) {
+                MutualAid.redraw(data.units);
+                if ('admin' == data.role || 'unit-coordinator' == data.role) {
+                  $(".addNew").show("slow", function() {
+                    $(".addNew").on("click", function(e) {
+                      e.preventDefault();
+                      $(".addNew").hide();
+                      $("#placement").show("slow", function() {
+                        $(".submitNew").on("click", MutualAid.saveNewUnit);
+                      });
+                    });
+                  });
+                }
+                $("#showLogin").off().html("Log Out").on("click", MutualAid.logout);
+                $("#loginBtn").off().prop("disabled", false).html('Log Out').on("click", MutualAid.logout);                
+          }
+              else {
+                var bounds = new google.maps.LatLngBounds();
+                $.each(data.units, function(i, unit) {
+                  bounds.extend({lat: parseFloat(unit.lat), lng: parseFloat(unit.lng)});
+                  var marker =
+                    new google.maps.Marker({
+                        position: {lat: parseFloat(unit.lat), lng: parseFloat(unit.lng)},
+                        map: MutualAid.map,
+                        label: unit.id,
+                        title: unit.text
+                      });
+                  
+                  var infowindow = new google.maps.InfoWindow({
+                    content: '<h3>Unit ID: ' + unit.id + '</h3>'
+                          +  '<p>' + unit.text + '</p>'
+                  });
+              
+                  marker.addListener('click', function() {
+                    infowindow.open(MutualAid.map, marker);
+                  });         
+              
+              
+                  MutualAid.units.push(marker);
+                });
+                MutualAid.map.fitBounds(bounds);              
+              }
+            },
+            url : MutualAid.urlBase + "units"
+          };
+          
+          if (MutualAid.retrieve('id') && MutualAid.retrieve('token')) {
+            request.headers = {
+              'user_id' : MutualAid.retrieve('id'),
+              'token' : MutualAid.retrieve('token')
+            };
+          }
+        
+          $.ajax(request);
+        },
+        commitToService : function(id) {
+          $.ajax({
+            contentType : 'application/json',
+            data : JSON.stringify({
+              person_id : MutualAid.retrieve('id'),
+              unit_id : id,
+              token : MutualAid.retrieve('token')
+            }),
+            dataType : 'json',
+            error : function(jqXHR, textStatus, errorThrown) {
+              alert(textStatus);
+            },
+            method : "POST",
+            success : function(data, textStatus, jqXHR) {
+              if ("OK" == data.status) {
+                MutualAid.redraw(data.units);
+              }
+            },
+            url : MutualAid.urlBase + "service"
+          });
+        },
+        didService : function(id) {
+          $.ajax({
+            contentType : 'application/json',
+            data : JSON.stringify({
+              person_id : MutualAid.retrieve('id'),
+              unit_id : id,
+              token : MutualAid.retrieve('token'),
+              is_damaged : $("#is_damaged").is(":checked"),
+              is_missing : $("#is_missing").is(":checked"),
+              is_low_on_soap : $("#is_low_on_soap").is(":checked"),
+              notes : $(".service-note").val(),
+              'use' : ($("#high_use").is(":checked") ? 'high' : 
+                      ($("#low_use").is(":checked") ? 'low' : 'medium'))
+            }),
+            dataType : 'json',
+            error : function(jqXHR, textStatus, errorThrown) {
+              alert(textStatus);
+            },
+            method : "PUT",
+            success : function(data, textStatus, jqXHR) {
+              if ("OK" == data.status) {
+                MutualAid.redraw(data.units);
+              }
+            },
+            url : MutualAid.urlBase + "service"
+          });        
+        },
+        
+        saveNewUnit : function(e) {
+          e.preventDefault();
+          var $this = $(this);
+          $this.prop("disabled", true).html('<img src="hand-wash/img/loading.gif">');
+          $.ajax({
+            contentType : 'application/json',
+            data : JSON.stringify({
+              person_id : MutualAid.retrieve('id'),
+              token : MutualAid.retrieve('token'),
+              unit_id : $("#newUnitId").val().replace(/^\s+|\s+$/g, ''),
+              latitude : $("#newLatitude").val().replace(/^\s+|\s+$/g, ''),
+              longitude : $("#newLongitude").val().replace(/^\s+|\s+$/g, ''),
+              description : $("#newDescription").val().replace(/^\s+|\s+$/g, ''),
+              visible : !$("#newIsNotVisible").is(":checked")
+            }),
+            dataType : 'json',
+            error : function(jqXHR, textStatus, errorThrown) {
+              var err = 'Error ' + textStatus;
+              if (errorThrown) {
+                err += '; ' + errorThrown;
+              }
+              alert(err);
+              console.log(jqXHR);
+            },
+            method : "POST",
+            success : function(data, textStatus, jqXHR) {
+              if ("OK" == data.status) {
+                location.reload();
+              }
+              else if ("id-collision" == data.status) {
+                alert("That ID is already in the Database! Sorry! Please pick a new one and re-submit.");
+                $(".submitNew").prop("disabled", false).html("Save");
+              }
+              else {
+                alert(data.message);
+                $(".submitNew").prop("disabled", false).html("Save");
+              }
+            },
+            url : MutualAid.urlBase + "units"
+          });
+        },
+        editUnit : function(unit) {
+          $(".addNew").hide();
+          MutualAid.editId = unit.id;
+          $("#newUnitTitle").html('<strong>Edit Unit</strong>');
+          $("#newUnitId").val(unit.id);
+          $("#newLatitude").val(unit.lat);
+          $("#newLongitude").val(unit.lng);
+          $("#newDescription").val(unit.text);
+          if (0 == parseInt(unit.is_visible)) {
+            $("#newIsNotVisible").prop("checked", true);
+          }
+          else {
+            $("#newIsVisible").prop("checked", true);
+          }
+          
+          $(".submitNew").off().on("click", MutualAid.saveEditUnit);
+
+          $("#placement").show();
+          document.getElementById('placement').scrollIntoView();
+        },
+        saveEditUnit : function(e) {
+          e.preventDefault();
+          $(this).prop("disabled", true).html('<img src="hand-wash/img/loading.gif">');
+          $.ajax({
+            contentType : 'application/json',
+            data : JSON.stringify({
+              person_id : MutualAid.retrieve('id'),
+              token : MutualAid.retrieve('token'),
+              edit_id : MutualAid.editId,
+              unit_id : $("#newUnitId").val().replace(/^\s+|\s+$/g, ''),
+              latitude : $("#newLatitude").val().replace(/^\s+|\s+$/g, ''),
+              longitude : $("#newLongitude").val().replace(/^\s+|\s+$/g, ''),
+              description : $("#newDescription").val().replace(/^\s+|\s+$/g, ''),
+              visible : !$("#newIsNotVisible").is(":checked")
+            }),
+            dataType : 'json',
+            error : function(jqXHR, textStatus, errorThrown) {
+              var err = 'Error ' + textStatus;
+              if (errorThrown) {
+                err += '; ' + errorThrown;
+              }
+              alert(err);
+              console.log(jqXHR);
+              $(".submitNew").prop("disabled", false).html("Save");
+            },
+            method : "PUT",
+            success : function(data, textStatus, jqXHR) {
+              if ("OK" == data.status) {
+                location.reload();
+              }
+              else if ("id-collision" == data.status) {
+                alert("That ID is already in the Database! Sorry! Please pick a new one and re-submit.");
+                $(".submitNew").prop("disabled", false).html("Save");
+              }
+              else {
+                alert(data.message);
+                $(".submitNew").prop("disabled", false).html("Save");
+              }
+            },
+            url : MutualAid.urlBase + "units"
+          });          
+        },
+        
+        redraw : function(units) {
+          $.each(MutualAid.units, function(i, u) {
+            u.setMap(null);                 
+          });
+          
+          MutualAid.units = [];
+          
+          var green =  {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor : 'green',
+            strokeColor : 'green',
+            fillOpacity : 100
+          };
+
+          var yellow =  {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor : 'gold',
+            strokeColor : 'black',
+            fillOpacity : 100,
+            strokeWeight : 1
+          };
+          
+          var red =  {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor : 'red',
+            strokeColor : 'red',
+            fillOpacity : 100
+          };
+          
+          var redDown = {
+            path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+            scale: 5,
+            fillColor : 'red',
+            strokeColor : 'red',
+            fillOpacity : 100
+          };
+
+          var yellowDown = {
+            path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+            scale: 5,
+            fillColor : 'gold',
+            strokeColor : 'black',
+            fillOpacity : 100,
+            strokeWeight : 1
+          };
+          
+          var redUp = {
+            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            scale: 5,
+            fillColor : 'red',
+            strokeColor : 'red',
+            fillOpacity : 100
+          };
+
+          var yellowUp = {
+            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            scale: 5,
+            fillColor : 'gold',
+            strokeColor : 'black',
+            fillOpacity : 100,  
+            strokeWeight : 1
+          };
+          
+          var greenDown = {
+            path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+            scale: 5,
+            fillColor : 'green',
+            strokeColor : 'green',
+            fillOpacity : 100
+          };
+          
+          var greenUp = {
+            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            scale: 5,
+            fillColor : 'green',
+            strokeColor : 'green',
+            fillOpacity : 100
+          };
+
+          var twoDays     = 60 * 60 * 24 * 2;
+          var twelveHours = 60 * 60 * 12;
+          var fourDays    = 60 * 60 * 24 * 4;
+                                        
+          var bounds = new google.maps.LatLngBounds();         
+          $.each(units, function(i, u) {
+            bounds.extend({lat: parseFloat(u.lat), lng: parseFloat(u.lng)});
+          
+            var r = red;
+            var y = yellow;
+            var g = green;
+            var a = false;
+            
+            var timePeriod = twoDays;
+            if ("undefined" !== typeof(u.seconds)) {
+              timePeriod = parseInt(u.seconds);
+            }
+          
+            if (u.last_serviced < Math.floor(Date.now() / 1000) - timePeriod) {
+              r  = redDown;
+              g  = greenDown;
+              y  = yellowDown;
+              a  = true;
+            }
+            else if (!u.is_complete) {
+              r  = redUp;
+              y  = yellowUp
+              g  = greenUp;
+            }
+            
+            
+            if (u.is_low_on_soap && u.text.match(/\w/)) {
+              u.text = 'Soap is Low';
+            }
+          
+            var marker =
+              new google.maps.Marker({
+                  position: {lat: parseFloat(u.lat), lng: parseFloat(u.lng)},
+                  map: MutualAid.map,
+                  label: u.id,
+                  title: u.text,
+                  icon: ((u.is_damaged || u.is_missing || !u.is_in_service) ? r : 
+                    (u.is_low_on_soap ? y : g))
+                });
+          
+            var c = '<h3>Unit ID: ' + u.id + '</h3>'
+                  +  '<p>' + u.text + '</p>'
+                  +  '<p>' + u.notes + '</p>';
+                  
+            if ('admin' == MutualAid.retrieve('role') || 'unit-coordinator' == MutualAid.retrieve('role')) {
+              c += '<button type="button" class="btn btn-secondary editUnit btn-sm" data-id="'+u.id+'" style="margin-bottom: 8px;">Edit Unit</button><br>';
+            }
+            
+            if (a) {
+              c += '<button type="button" class="btn btn-primary willService btn-sm" data-id="'+u.id+'">I will service this station within 24 hours</button>';
+            }
+            else if ((!u.is_complete && u.last_serviced_by == MutualAid.retrieve('id')) 
+              || (('admin' == MutualAid.retrieve('role') || 'unit-coordinator' == MutualAid.retrieve('role')) 
+                && (u.is_damaged || u.is_missing || !u.is_in_service || u.is_low_on_soap))) {
+              c += '<table class="table">' 
+                +  '<tr>'
+                +    '<td colspan="2">Damaged?</td>'
+                +    '<td><input type="radio" name="damaged" value="y" id="is_damaged"';
+              if (u.is_damaged) { c += ' checked'; }
+              c += '> Yes</td>'
+                +    '<td><input type="radio" name="damaged" value="n"';
+              if (!u.is_damaged) { c += ' checked'; }
+              c += '> No</td>'
+                +  '</tr>'
+                +  '<tr>'
+                +    '<td colspan="2">Missing?</td>'
+                +    '<td><input type="radio" name="missing" value="y" id="is_missing"';
+              if (u.is_missing) { c += ' checked'; }
+              c +=   '> Yes</td>'
+                +    '<td><input type="radio" name="missing" value="n"';
+              if (!u.is_missing) { c += ' checked'; } 
+              c +=   '> No</td>'
+                +  '</tr>'
+                +  '<tr>'
+                +    '<td colspan="2">Soap Low?</td>'
+                +    '<td><input type="radio" name="lowsoap" value="y" id="is_low_on_soap"';
+              if (u.is_low_on_soap) { c += ' checked'; }
+              c += '> Yes</td>'
+                +    '<td><input type="radio" name="lowsoap" value="n"';
+              if (!u.is_low_on_soap) { c += ' checked'; }
+              c += '> No</td>'
+                +  '</tr>'
+                
+                +  '<tr>'
+                +    '<td>Use?</td>'
+                +    '<td><input type="radio" name="use" value="high" id="high_use"> High</td>'
+                +    '<td><input type="radio" name="use" value="medium" id="medium_use"> Medium</td>'
+                +    '<td><input type="radio" name="use" value="low" id="low_use"> Low</td>'
+                +  '</tr>'
+                
+                
+                
+                +  '<tr>'
+                +    '<td>Note:</td>'
+                +    '<td colspan="3">'
+                +      '<input type="text" class="form-control service-note" data-id="' + u.id + '">'
+                +    '</td>'
+                +   '</tr>'
+                +   '<tr>'
+                +     '<td colspan="4"><button type="button" class="btn btn-primary didService btn-sm" data-id="' + u.id + '">Record</button>'
+                +   '</tr>'
+                + '</table><br>'
+                ;
+            }
+            
+
+            var infowindow = new google.maps.InfoWindow({
+              content : c
+            });
+            
+      
+            marker.addListener('click', function() {
+              if (MutualAid.openWindow) {
+                MutualAid.openWindow.close();
+              }
+              infowindow.open(MutualAid.map, marker);
+              MutualAid.openWindow = infowindow;
+
+              infowindow.addListener('domready', function() {
+                $(".willService").off().on("click", function(e) {
+                  e.preventDefault();
+                  var $this = $(this);
+                  $this.prop("disabled", true).html('<img src="hand-wash/img/loading.gif">');
+                  MutualAid.commitToService($this.attr("data-id"));
+                });
+                
+                $(".didService").off().on("click", function(e) {
+                  e.preventDefault();
+                  var $this = $(this);
+                  $this.prop("disabled", true).html('<img src="hand-wash/img/loading.gif">');
+                  MutualAid.didService($this.attr("data-id"));
+                });
+                
+                $(".editUnit").off().on("click", function(e) {
+                  e.preventDefault();
+                  MutualAid.editUnit(u);
+                });
+              });
+            });         
+                      
+            MutualAid.units.push(marker);
+          });      
+          
+          MutualAid.map.fitBounds(bounds);
+          
+          $("#loginMenu").html('Logout').on("click", MutualAid.logout);
+        },
+        
+        logout : function(e) {
+          e.preventDefault();
+          MutualAid.remove('id');
+          MutualAid.remove('name');
+          MutualAid.remove('token');
+          MutualAid.remove('role');
+          MutualAid.remove('refresh');
+          location.reload();
+        },
+        
+        init : function() {
+          $("#showLogin").on("click", function(e) {
+            e.preventDefault();
+            $(".login-form").show("slow", MutualAid.showLogin);
+          ;})
+        },
+        store : function(key, value) {
+          if (typeof(Storage) !== "undefined") {
+            window.localStorage.setItem(key, value);
+          }
+          else {
+            Cookies.set(key, value, { secure: true, expires: 60 });
+          }
+        },
+        retrieve : function(key) {
+          if (typeof(Storage) !== "undefined") {
+            return window.localStorage.getItem(key);
+          }
+          else {
+            return Cookies.get(key);
+          }
+        },
+        remove : function(key) {
+          if (typeof(Storage) !== "undefined") {
+            localStorage.removeItem(key);
+          }
+          else {
+            Cookies.remove(key);
+          }
+        }
+      };
+
+
+      function initMap() {
+      
+        var covered = {lat: 35.9263693, lng: -79.0757927};
+        MutualAid.map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 18, center: covered}
+        );
+                    
+        MutualAid.getUnitList();
+
+      }
+      
+      
+      MutualAid.init();
+      
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwBy_Wkdt0JfuD_RME-28eVFiV6eYxqN0&callback=initMap">
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWBDD3C64N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PWBDD3C64N');
+    </script>      
+  </body>
+</html>
+
