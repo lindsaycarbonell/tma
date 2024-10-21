@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Support Our Disaster Relief Efforts | Mutual Aid Disaster Relief (MADR)</title>
+	<style>
+		body {
+			font-family: 'Helvetica Neue', Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #333;
+		}
+		header {
+			background-color: #5b2d20;
+			color: white;
+			padding: 30px 0;
+			text-align: center;
+		}
+		header h1 {
+			font-size: 36px;
+			font-weight: 700;
+			text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+		}
+		section {
+			max-width: 1000px;
+			margin: 20px auto;
+			padding: 20px;
+			display: flex;
+			gap: 20px;
+		}
+		.left-column, .right-column {
+			flex: 1;
+		}
+		
+		.contact-info {
+			background-color: #f5f5f5;
+			padding: 20px;
+			border-radius: 8px;
+			margin-top: 30px;
+			text-align: center;
+		}
+		.contact-info h3 {
+			margin: 0;
+		}
+		h2 {
+			color: #a45228;
+			font-size: 28px;
+			font-weight: 700; 
+		}
+		p, ul {
+			font-size: 18px;
+			line-height: 1.6;
+		}
+		.small{
+			font-size: 80%;
+		}
+		li{
+			padding: 10px 0;
+		}
+		footer{
+			background-color: rgb(248, 249, 250);
+			padding-top: 1rem !important;
+			padding-bottom: 1rem !important;
+			text-align: center;
+			margin-bottom: 50px;
+		}
+
+		.cta-button {
+			background-color: #f36f4a; /* Your button color */
+			color: white;
+			padding: 12px 25px;
+			text-decoration: none;
+			border-radius: 5px;
+			font-size: 22px;
+			line-height: 1.2;
+			font-weight: 700;
+			display: inline-block;
+			box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adding shadow effect */
+			transition: all 0.3s ease-in-out; /* Smooth transition effect */
+		}
+		
+		.cta-button:hover {
+			background-color: #e65930; /* Darker shade for hover effect */
+			color: #fff;
+			box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.25); /* Increase shadow on hover */
+			transform: translateY(-2px); /* Lift the button slightly on hover */
+		}
+		a{
+			color: #ff7a59;
+		}
+		a:hover {
+			color: #f04a41;
+		}
+		
+		.testimonial {
+			color: #a45228;
+			font-style: italic;
+			background-color: #f9e8dc;
+			padding: 5px 25px;
+			border-radius: 5px;
+			margin: 50px 0;
+		}
+		/* Form Container Styling */
+		section#in-kind-donation-form {
+			background-color: #f5f5f5;
+			padding: 20px;
+			border-radius: 8px;
+			margin-top: 30px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		}
+		
+		section#in-kind-donation-form h2 {
+			color: #7b1142;
+			font-size: 28px;
+			margin-bottom: 20px;
+		}
+		
+		section#in-kind-donation-form p {
+			font-size: 18px;
+			line-height: 1.6;
+			margin-bottom: 20px;
+		}
+		@media screen and (max-width: 700px) { 
+			section {display: block;}
+			.modal-content {width:80%;}
+		}
+		
+		/* Form Labels */
+		form label {
+			font-size: 18px;
+			font-weight: 600;
+			margin-bottom: 5px;
+			display: block;
+		}
+		
+		/* Input Fields and Textarea */
+		form input, form textarea, form select {
+			width: 100%;
+			padding: 10px;
+			margin-top: 10px;
+			border-radius: 5px;
+			border: 1px solid #ddd;
+			font-size: 16px;
+			margin-bottom: 15px;
+			box-sizing: border-box;
+		}
+		
+		/* Input Fields Hover/Focus */
+		form input:focus, form textarea:focus, form select:focus {
+			outline: none;
+			border-color: #7b1142;
+			box-shadow: 0 0 5px rgba(123, 17, 66, 0.5);
+		}
+		
+		/* Submit Button */
+		form button {
+			background-color: #f36f4a;
+			color: white;
+			padding: 12px 25px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 18px;
+		}
+		
+		/* Submit Button Hover */
+		form button:hover {
+			background-color: #e65930;
+		}
+		/* Modal Styles */
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+		}
+		
+		.modal-content {
+			background-color: #f9f9f9;
+			margin: 15% auto;
+			padding: 20px;
+			border-radius: 10px;
+			width: 50%;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+		}
+		
+		/* Close Button */
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+		
+		.close:hover, .close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+		
+		/* Form in Modal */
+		.modal-content form {
+			margin-top: 20px;
+		}
+		
+		.modal-content form input, .modal-content form textarea, .modal-content form select {
+			width: 100%;
+			padding: 10px;
+			margin-top: 10px;
+			border-radius: 5px;
+			border: 1px solid #ddd;
+			font-size: 16px;
+			margin-bottom: 15px;
+		}
+		
+		.modal-content form button {
+			background-color: #f36f4a;
+			color: white;
+			padding: 12px 25px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 18px;
+		}
+		
+		.modal-content form button:hover {
+			background-color: #e65930;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>Help Communities Recover from Hurricane Helene </h1>
+	</header>
+
+	<section>	
+	<!-- Left Column for Donations -->
+	<div class="left-column">
+		<div class="contact-info">
+			<h3>Support Us:</h3>
+			<!-- Button for In-Kind Donation -->
+			<p style="margin-top: 40px;"><a href="javascript:void(0);" class="cta-button" id="open-inkind-modal">In-Kind Donations</a></p>
+			<p class="small">Donate essential supplies directly to Triangle Mutual Aid. For a tax-deductible acknowledgment, please fill out <a href="javascript:openInKind();">our form</a>.</p>
+			
+			<!-- Button for Direct Cash Donation -->
+			<p style="margin-top: 40px;"><a href="javascript:void(0);" class="cta-button" id="open-cash-modal">Direct Cash Donation</a></p>
+			<p class="small">Give directly through Venmo (@TriangleMutualAid) or CashApp ($TriangleMutualAid) to make an immediate impact. <em>Note: This donation is not tax-deductible.</em></p>
+
+			<!-- Button for Tax Deductible Cash Donation -->
+			<p style="margin-top: 30px;"><a href="javascript:void(0);" class="cta-button" id="open-madr-modal">Tax-Deductible Cash Donation</a></p>
+			<p class="small">Make your tax-deductible donation through Mutual Aid Disaster Relief (MADR) to support our work. Your contribution directly helps communities affected by Hurricane Helene.</p>
+		</div>
+	</div>
+	
+	<!-- Right Column for Details -->
+	<div class="right-column">
+		
+
+	
+
+		<h2>Your Donations Can Save Lives</h2>
+		<p>
+			Triangle Mutual Aid and <a href="https://mutualaiddisasterrelief.org">Mutual Aid Disaster Relief (MADR)</a> are actively providing relief to communities hit by Hurricane Helene. We urgently need your help to continue delivering critical supplies.
+		</p>
+		
+		
+		<p>We are currently seeking <strong>large in-kind donations</strong>, such as:</p>
+		<ul>
+			<li><strong>Generators</strong>, <strong>power tools</strong>,  <strong>chainsaws</strong>, and <strong>propane</strong> to restore power and assist in clean-up efforts</li>
+			<li><strong>Shelving</strong> and <strong>storage containers</strong> for organizing and distributing supplies efficiently</li>
+			<li><strong>Food</strong>, <strong>water</strong>, and <strong>hygiene supplies</strong> to help families survive</li>
+			<li>Emergency gear like <strong>space heaters</strong>, <strong>sleeping bags</strong>, and <strong>tents</strong> for warmth and shelter</li>
+		</ul>
+		
+<!-- Added the testimonial or impact information -->
+		<div class="testimonial">
+		<p><em>Your support has already helped us deliver over <strong>80,000 lbs of supplies</strong> to those affected by Hurricane Helene. With your help, we can continue to provide essential resources to those in need.</em></p>
+		</div>
+		
+		<h2>Your Donation Options</h2>
+		<ul>
+			<li><strong>In-Kind Donations:</strong> For acknowledgment letters, fill out <a href="javascript:openInKind();" id="open-inkind-modal">our form</a></li>
+			<li><strong>Direct Cash Donation</strong> via Venmo (<a href="https://venmo.com/u/TriangleMutualAid" target="_blank">@TriangleMutualAid</a>) or CashApp ( <a href="https://cash.app/$TriangleMutualAid" target="_blank">$TriangleMutualAid</a>)</li>
+			
+			<li><strong>Tax-Deductible Cash Donation</strong> via <a href="javascript:void(0);" id="open-madr-modal">Mutual Aid Disaster Relief</a></li>
+		</ul>
+		
+		<p>Your donation ensures the timely delivery of these life-saving supplies to the most vulnerable communities.</p>
+
+
+		</div>
+	</section>
+		
+		<!-- Cash Donation Modal -->
+		<div id="cash-modal" class="modal">
+			<div class="modal-content">
+			<span class="close close-cash">&times;</span>
+				<h2>Donate via Venmo or CashApp</h2>
+				<p>Thank you for your support! You can make cash donations using the following platforms:</p>
+				<ul>
+					<li><strong>Venmo:</strong> <a href="https://venmo.com/u/TriangleMutualAid" target="_blank">@TriangleMutualAid</a></li>
+					<li><strong>CashApp:</strong> <a href="https://cash.app/$TriangleMutualAid" target="_blank">$TriangleMutualAid</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- MADR Donation Modal -->
+		<div id="madr-modal" class="modal">
+			<div class="modal-content">
+				<span class="close close-madr">&times;</span>
+				<h2>Make a Tax-Deductible Donation</h2>
+				<p>Your donation through Mutual Aid Disaster Relief (MADR) will support Hurricane Helene relief efforts. Please comment “for Hurricane Helene” to ensure it’s earmarked.</p>
+				<p>You will be redirected to MADR's official donation page.</p>
+				<a href="https://actionnetwork.org/fundraising/mutual-aid-disaster-relief" class="cta-button" target="_blank">Proceed to Donate</a>
+			</div>
+		</div>
+		
+		<!-- In-Kind Donation Modal -->
+		<div id="in-kind-modal" class="modal">
+			<div class="modal-content">
+				<span class="close close-inkind">&times;</span>
+				<h2>In-Kind Donation Form</h2>
+				<p>Please fill out the details of your in-kind donation below. We will use this information to send you an acknowledgment letter for tax purposes.</p>				
+				
+				<form action="mailto:info@trianglemutualaid.org" method="post" enctype="text/plain">
+					<!-- Name or Company Name -->
+					<label for="name">Your Name or Company Name:</label>
+					<input type="text" id="name" name="name" required>
+				
+					<!-- Email Address -->
+					<label for="email">Email Address:</label>
+					<input type="email" id="email" name="email" required>
+				
+					<!-- Mailing Address -->
+					<label for="address">Mailing Address (optional):</label>
+					<input type="text" id="address" name="address">
+				
+					<!-- Donation Description -->
+					<label for="donation-details">What & How Much Was Donated:</label>
+					<textarea id="donationDetails" name="donation-details" rows="4" placeholder="Please provide a reasonably detailed description (e.g., '8 cases (288 units) of 4oz liquid soap')." required></textarea>
+					
+					<!-- Contact Coordination -->
+					<label for="contact-coordination">Have you been in contact with someone about this, or do you need to be contacted to coordinate logistics? If you've been in contact, please include their name and email.</label>
+					<textarea id="contactCoordination" name="contact-coordination" rows="4" placeholder="Please provide details, including the name and email of the person you've been in contact with, or let us know if you need assistance with logistics." required></textarea>
+				
+					<!-- Preferred Contact for Acknowledgment -->
+					<label for="preferred-contact">Preferred Method for Acknowledgment Letter:</label>
+					<select id="preferredContact" name="preferred-contact" required>
+						<option value="email">Email</option>
+						<option value="mail">Mail</option>
+					</select>
+				
+					<!-- Submit Button -->
+					<button type="button" id="formButton">Submit In-Kind Donation Details</button>
+				</form>
+			</div>
+		</div>
+  <script src="js/jquery-3.6.0.min.js"></script>
+	<script>
+	$("#formButton").on("click", () => {
+	  $("#formButton").text("Sending...");
+	  const formData = `
+	    Name : ${$("#name").val()}
+	    Email : ${$("#email").val()}
+	    Address: ${$("#address").val()}
+	    Donation Description: ${$("#donationDetails").val()}
+	    Coordination: ${$("#contactCoordination").val()}
+	    Preferred Contact: ${$("#preferredContact").val()}	    
+	  `;
+	  
+	  $.ajax(
+	    'https://j1hfjomnhk.execute-api.us-east-1.amazonaws.com/0/in-kind', {
+	      contentType : 'text/plain',
+	      data : formData, 
+	      error : () => { alert('error'); },
+	      method : 'POST',
+	      success : () => { 
+	        inKindModal.style.display = "none"; 
+	        $("#formButton").text("Submit In-Kind Donation Details");
+	      },
+	    }
+	  );
+	})
+	
+	// Cash Donation Modal Logic
+	var cashModal = document.getElementById("cash-modal");
+	var openCashBtn = document.getElementById("open-cash-modal");
+	var closeCashBtn = document.getElementsByClassName("close-cash")[0];
+	
+	openCashBtn.onclick = function() {
+		cashModal.style.display = "block";
+	}
+	
+	closeCashBtn.onclick = function() {
+		cashModal.style.display = "none";
+	}
+	
+	window.onclick = function(event) {
+		if (event.target == cashModal) {
+			cashModal.style.display = "none";
+		}
+	}
+	
+	// MADR Donation Modal Logic
+	var madrModal = document.getElementById("madr-modal");
+	var openMadrBtn = document.getElementById("open-madr-modal");
+	var closeMadrBtn = document.getElementsByClassName("close-madr")[0];
+	
+	
+	openMadrBtn.onclick = function() {
+		madrModal.style.display = "block";
+	}
+	
+	closeMadrBtn.onclick = function() {
+		madrModal.style.display = "none";
+	}
+	
+// 	window.onclick = function(event) {
+// 		if (event.target == madrModal) {
+// 			madrModal.style.display = "none";
+// 		}
+// 	}
+	
+	// In-Kind Donation Modal Logic
+	var inKindModal = document.getElementById("in-kind-modal");
+	var openInKindBtn = document.getElementById("open-inkind-modal");
+	var closeInKindBtn = document.getElementsByClassName("close-inkind")[0];
+	
+	openInKindBtn.onclick = function() {
+		inKindModal.style.display = "block";
+	}
+	
+	closeInKindBtn.onclick = function() {
+		inKindModal.style.display = "none";
+	}
+	
+	function openInKind() {
+	  inKindModal.style.display = "block";
+	}
+
+	
+	window.onclick = function(event) {
+		if (event.target == inKindModal) {
+			inKindModal.style.display = "none";
+		}
+		else if (event.target == cashModal) {
+			cashModal.style.display = "none";
+		}
+		else if (event.target == madrModal) {
+			madrModal.style.display = "none";
+		}
+	}
+	
+	
+	</script>
+</body>
+<footer>
+	
+<p><img src="https://www.trianglemutualaid.org/img/logo.svg" style="height: 75px; width: 75px;"><br /><strong>Triangle Mutual Aid</strong><br /><em>In collaboration with Mutual Aid Disaster Relief (EIN: 81-3606763)</em><br />
+<span class="small"><a href="mailto:info@TriangleMutualAid.org">info@TriangleMutualAid.org</a>  |  <a href="mailto:donations@TriangleMutualAid.org">donations@TriangleMutualAid.org</a>  |  <a href="https://m.me/TriangleMutualAid" target="_blank">Facebook Messenger</a></span></p>
+</footer>
+</html>
